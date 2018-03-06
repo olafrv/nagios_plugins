@@ -38,15 +38,15 @@ then
 	exit $R_CRITICAL;
 elif grep -i "Failed actions" "$F_OUT" > /dev/null
 then
-	R_MSGS="$_MSGS Detected failed actions or failed actions not cleaned up";
+	R_MSGS="$R_MSGS Detected failed actions or failed actions not cleaned up";
 	R_CODE=$R_WARNING;
 elif ! grep -i "partition with quorum" "$F_OUT" > /dev/null
 then 
-	R_MSGS="$_MSGS Cluster quorum is lost"
+	R_MSGS="$R_MSGS Cluster quorum is lost"
 	R_CODE=$R_CRITICAL;
 elif egrep -i "offline|stopped|standby|fail-count|unmanaged|not installed" "$F_OUT" > /dev/null
 then
-	R_MSGS="$_MSGS There are cluster nodes and/or resources with problems"
+	R_MSGS="$R_MSGS There are cluster nodes and/or resources with problems"
 	R_CODE=$R_CRITICAL;
 fi
 
