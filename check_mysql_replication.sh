@@ -1,11 +1,23 @@
 #!/bin/bash
 
-MODE=$1
-ROLE=$2
-MYIP=$3
-MYPO=$4
-MYUS=$5
-MYPW=$6
+###
+# Author: Olaf Reitmaier <olafrv@gmail.com>
+#
+# MySQL replication status check as Nagios plugin (to be run from Nagios Server):
+#
+# Result: returns a Nagios status code:
+# - 0 with its respective message (i.e. "STATUS: OK")
+# - 1 if a warning (WARNING) with a descriptive message
+# - 2 if there is a critical error (CRITICAL) with a descriptive message
+##
+
+MODE=$1   # -d to show and exit, -n to check and return Nagios status code
+ROLE=$2   # master or slave
+MYIP=$3   # MySQL server IPv4 address (or hostname)
+MYPO=$4   # MySQL server port
+MYUS=$5   # MySQL username
+MYPW=$6   # MySQL password
+
 CMD="/usr/bin/mysql -h $MYIP -P $MYPO -u $MYUS -p$MYPW"
 FOUT="/tmp/check_mysql_replication_${ROLE}_${MYIP}_${MYPO}"
 
@@ -73,9 +85,7 @@ then
 	fi
 
 else
-	echo -n "Execute: bash check_mysql.sh [-d|-n] [master|slave] IP Port User Password"
-
+	echo -n "Execute: bash check_mysql.sh [-d|-n] [master|slave] <IP> <Port> <Username> <Password>"
 fi
 
 echo -n -e "\n"
-
