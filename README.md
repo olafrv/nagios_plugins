@@ -1,4 +1,4 @@
-# Custom Nagios
+# Custom Nagios Plugins
 
 Own useful Nagios plugins, also compatible with Icinga and LibreNMS.
 
