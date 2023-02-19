@@ -3,8 +3,9 @@
 ###
 # Author: Olaf Reitmaier <olafrv@gmail.com>
 #
-# Peacemaker Cluster status check as Nagios plugin (to be run remotely via the Nagios Agent):
+# Peacemaker Cluster status check as Nagios plugin (to be run remotely via the Nagios Agent) based on:
 # https://exchange.nagios.org/directory/Plugins/Clustering-and-High-2DAvailability/Check-CRM/details
+# The main difference to the previous Perl script, is that it does not checks Peacemaker 'constraints'.
 #
 # Result: returns a Nagios status code:
 # - 0 with its respective message (i.e. "STATUS: OK")
