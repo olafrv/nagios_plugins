@@ -1,19 +1,15 @@
 #!/bin/bash
 
 ###
-# Autor: Olaf Reitmaier <olafrv@gmail.com>
+# Author: Olaf Reitmaier <olafrv@gmail.com>
 #
-# Implementacion en BASH del Plugin para Nagios para Chequeo de Cluster de Peacemaker:
+# Peacemaker Cluster status check as Nagios plugin (to be run remotely via the Nagios Agent):
 # https://exchange.nagios.org/directory/Plugins/Clustering-and-High-2DAvailability/Check-CRM/details
 #
-# A diferencia del script en Perl no incluye el chequeo de 'constraints' de Peacemaker.
-#
-# Sintaxis: check_crm.sh
-#
-# Resultado: retorna un codigo de estado de Nagios: 
-#  - 0 con su respectivo mensaje (i.e. "STATUS: OK")
-#  - 1 si una alerta (WARNING) con un mensaje descriptivo
-#  - 2 si hay un error critico (CRITICAL) con un mensaje descritivo
+# Result: returns a Nagios status code:
+# - 0 with its respective message (i.e. "STATUS: OK")
+# - 1 if a warning (WARNING) with a descriptive message
+# - 2 if there is a critical error (CRITICAL) with a descriptive message
 ##
 
 R_OK=0
@@ -65,4 +61,3 @@ if [ $R_CODE == $R_OK ]; then R_MSGS="STATUS: OK"; fi
 
 echo $R_MSGS
 exit $R_CODE
-
